@@ -1,0 +1,14 @@
+application:
+  name: catalogue
+
+
+#Oracle Connection
+spring:
+ datasource.url: jdbc:oracle:thin:@192.168.56.101:1521:orcl
+ datasource.username: INETDBA
+ datasource.password: sachindra
+ datasource.driver-class-name: oracle.jdbc.OracleDriver
+ #hibernate config
+ jpa:
+  database-platform: org.hibernate.dialect.Oracle10gDialect
+  hibernate.ddl-auto: create-drop

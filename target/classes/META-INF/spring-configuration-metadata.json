@@ -1,0 +1,13 @@
+{
+  "groups": [{
+    "name": "application",
+    "type": "com.sachindramaharjan.catalogue.config.ServerConfig",
+    "sourceType": "com.sachindramaharjan.catalogue.config.ServerConfig"
+  }],
+  "properties": [{
+    "name": "application.name",
+    "type": "java.lang.String",
+    "sourceType": "com.sachindramaharjan.catalogue.config.ServerConfig"
+  }],
+  "hints": []
+}
