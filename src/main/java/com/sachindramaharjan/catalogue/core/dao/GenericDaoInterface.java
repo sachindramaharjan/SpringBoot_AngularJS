@@ -5,9 +5,9 @@ package com.sachindramaharjan.catalogue.core.dao;
  */
 public interface GenericDaoInterface<T> {
 
-    public T save(T obj);
-    public T update(T obj);
-    public Boolean delete(T obj);
-    public T find(T obj);
+    <T> T save(T obj);
+    <T> T update(T obj);
+    boolean delete(T obj);
+    <T> T find(T obj);
 
 }

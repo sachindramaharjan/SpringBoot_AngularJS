@@ -7,16 +7,18 @@ import com.sachindramaharjan.catalogue.core.entity.User;
  */
 public interface UserService {
 
-    public User findUserByUsername(String username);
+    User findUserByUsername(String username);
 
-    public User findUserByEmail(String username);
+    User findUserByEmail(String username);
 
-    public User loginUser(User user);
+    boolean isValidUser(User user);
 
-    public boolean changePassword(String username, String password, String newPassword);
+    boolean changePassword(String username, String password, String newPassword);
 
-    public User addUser(User user);
+    User addUser(User user);
 
-    public User deleteUser(Long id);
+    boolean deleteUser(Long id);
+
+    User loginUser(User user);
 
 }

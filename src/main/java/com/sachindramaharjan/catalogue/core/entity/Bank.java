@@ -1,6 +1,7 @@
 package com.sachindramaharjan.catalogue.core.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by sachindra.maharjan on 4/17/16.
@@ -18,8 +19,8 @@ public class Bank {
     private String bankCode;
     @Column(name = "SWIFT_CODE")
     private String swiftCode;
-    @OneToOne(mappedBy = "bank", cascade = CascadeType.ALL)
-    private Account account;
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Account> account;
 
     public Long getId() {
         return id;
@@ -53,11 +54,11 @@ public class Bank {
         this.swiftCode = swiftCode;
     }
 
-    public Account getAccount() {
+    public List<Account> getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(List<Account> account) {
         this.account = account;
     }
 }

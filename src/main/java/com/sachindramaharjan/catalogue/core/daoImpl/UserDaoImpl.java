@@ -1,6 +1,6 @@
 package com.sachindramaharjan.catalogue.core.daoImpl;
 
-import com.sachindramaharjan.catalogue.core.dao.UserDaoInterface;
+import com.sachindramaharjan.catalogue.core.dao.UserDao;
 import com.sachindramaharjan.catalogue.core.entity.User;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
  * Created by sachindra.maharjan on 4/17/16.
  */
 @Repository
-public class UserDaoImpl extends GenericDaoImpl<User> implements UserDaoInterface{
+public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao<User> {
 
     private String hqlQuery;
 
@@ -27,7 +27,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDaoInterfac
     }
 
     @Override
-    public User findByEmail(String email) {
+    public User findByEmail(String email){
         hqlQuery = "SELECT u FROM User u WHERE u.email = :email";
         TypedQuery<User> query = entityManager.createQuery(hqlQuery, User.class);
         query.setParameter("email", email);

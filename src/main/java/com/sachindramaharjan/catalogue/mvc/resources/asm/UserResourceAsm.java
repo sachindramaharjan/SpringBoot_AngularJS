@@ -23,7 +23,7 @@ public class UserResourceAsm extends ResourceAssemblerSupport<User, UserResource
     public UserResource toResource(User user) {
         UserResource userResource = new UserResource();
         userResource.setUsername(user.getUsername());
-        userResource.add(linkTo(methodOn(UserController.class).findUser(user.getUsername())).withSelfRel());
+        userResource.add(linkTo(methodOn(UserController.class).findUserByUsername(user.getUsername())).withSelfRel());
         return userResource;
     }
 }

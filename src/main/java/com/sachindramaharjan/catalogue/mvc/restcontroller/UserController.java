@@ -9,7 +9,6 @@ import com.sachindramaharjan.catalogue.mvc.resources.asm.UserResourceAsm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +45,7 @@ public class UserController {
         return new ResponseEntity<>(res, httpStatus);
     }
 
-    @RequestMapping(value = "/findUser/{emaail}")
+    @RequestMapping(value = "/findUser/{email}")
     public ResponseEntity<UserResource> findUserByEmail(@PathVariable String email){
         UserResource res =  null;
         HttpStatus httpStatus = null;
@@ -63,13 +62,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<UserResource> login(@RequestBody UserResource userResource){
-        User user = userService.loginUser(userResource.toUser());
-        UserResource res = new UserResourceAsm().toResource(user);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(res.getLink("self").getHref()));
+    public ResponseEntity<UserResource> loginUser(@RequestBody UserResource userResource){
+        User currentUser = userService.loginUser(userResource.toUser());
 
-        return new ResponseEntity<>(res, headers, HttpStatus.OK);
+        boolean isValid = userService.isValidUser(userResource.toUser());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

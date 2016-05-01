@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
  * Created by sachindra.maharjan on 4/17/16.
  */
 @Repository
-public class GenericDaoImpl<T> implements GenericDaoInterface {
+public class GenericDaoImpl<T> implements GenericDaoInterface<T> {
 
     protected EntityManager entityManager;
     private Class<T> type;
@@ -31,19 +31,19 @@ public class GenericDaoImpl<T> implements GenericDaoInterface {
     }
 
     @Override
-    public Object save(Object obj) {
+    public <T> T save(T obj){
         entityManager.persist(obj);
         entityManager.flush();
         return obj;
     }
 
     @Override
-    public Object update(Object obj) {
+    public <T> T update(T obj) {
         return entityManager.merge(obj);
     }
 
     @Override
-    public Boolean delete(Object obj) {
+    public boolean delete(Object obj) {
 
         try {
             entityManager.remove(obj);
@@ -54,7 +54,8 @@ public class GenericDaoImpl<T> implements GenericDaoInterface {
     }
 
     @Override
-    public Object find(Object obj) {
-        return entityManager.find(type, obj);
+    public <T> T find(T obj) {
+        return entityManager.find((Class<T>) type, obj);
     }
+
 }

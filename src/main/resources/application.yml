@@ -11,4 +11,4 @@ spring:
  #hibernate config
  jpa:
   database-platform: org.hibernate.dialect.Oracle10gDialect
-  hibernate.ddl-auto: create-drop
+  hibernate.ddl-auto: create

@@ -1,13 +1,14 @@
 package com.sachindramaharjan.catalogue.core.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by sachindra.maharjan on 4/13/16.
  */
 @Entity
 @Table(name= "TBL_USER")
-public class User {
+public class User implements Serializable{
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "USER_ID")
@@ -46,7 +47,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username.toLowerCase();
     }
 
     public String getPassword() {
@@ -62,7 +63,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public boolean isActivate_fl() {

@@ -56,7 +56,7 @@ public class UserControllerTest {
         user.setPassword("maharjan");
 
 
-        when(userService.findUser("sachindra")).thenReturn(user);
+        when(userService.findUserByUsername("sachindra")).thenReturn(user);
 
         mockMvc.perform(get("/catalogue/rest/findUser/sachindra"))
                 .andExpect(status().isOk())
@@ -74,7 +74,7 @@ public class UserControllerTest {
         user.setUsername("sachindra");
         user.setPassword("maharjan");
 
-        when(userService.loginUser(any(User.class))).thenReturn(user);
+        when(userService.isValidUser(any(User.class))).thenReturn(true);
 
         mockMvc.perform(post("/catalogue/rest/login")
                         .content("{\"username\":\"sachindra\",\"password\":\"maharjan\"}")

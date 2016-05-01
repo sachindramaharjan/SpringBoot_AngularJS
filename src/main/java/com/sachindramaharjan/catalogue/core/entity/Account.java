@@ -24,19 +24,19 @@ public class Account {
     @Column(name = "SSN")
     private String ssn;
     @Column(name = "ACCOUNT_NUMBER")
-    private String accountNumber;
+    private Long accountNumber;
     @Column(name = "ROUTING_NUMBER")
-    private String routingNumber;
+    private Long routingNumber;
     @Column(name = "CURRENCY")
     private String currency;
     @Column(name = "BALANCE")
     private BigDecimal balance;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "BANK_ID")
     private Bank bank;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User user;
 
@@ -83,19 +83,19 @@ public class Account {
         this.ssn = ssn;
     }
 
-    public String getAccountNumber() {
+    public Long getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public String getRoutingNumber() {
+    public Long getRoutingNumber() {
         return routingNumber;
     }
 
-    public void setRoutingNumber(String routingNumber) {
+    public void setRoutingNumber(Long routingNumber) {
         this.routingNumber = routingNumber;
     }
 
